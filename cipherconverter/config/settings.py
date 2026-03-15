@@ -4,7 +4,7 @@ from datetime import timedelta
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "django-insecure-a)xc5u4+8=s1uri6#81&wle)%+k1-lzi+!89_re6(-d+eu9=c5"
+SECRET_KEY = os.environ["SECRET_KEY"]
 
 DEBUG = True
 
@@ -83,7 +83,7 @@ SIMPLE_JWT = {
     "BLACKLIST_AFTER_ROTATION": True,
     "UPDATE_LAST_LOGIN": True,
     "ALGORITHM": "HS256",
-    "SIGNING_KEY": os.getenv("JWT_SIGNING_KEY", SECRET_KEY),
+    "SIGNING_KEY": SECRET_KEY,
     "AUTH_HEADER_TYPES": ("Bearer",),
 }
 
