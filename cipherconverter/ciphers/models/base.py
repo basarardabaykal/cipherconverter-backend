@@ -14,7 +14,9 @@ class CipherBase(models.Model):
     )
     input_text = models.TextField()
     output_text = models.TextField()
-    operation = models.CharField(max_length=10, choices=Operation.choices)
+    operation = models.CharField(
+        max_length=10, choices=Operation.choices, db_index=True
+    )
 
     class Meta:
         abstract = True
