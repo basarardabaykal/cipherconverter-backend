@@ -1,0 +1,55 @@
+src = ["cipherconverter"]
+line-length = 99
+exclude = [
+    "migrations",
+    "docs",
+    "venv",
+    "**/apps.py",
+    "cipherconverter/config/*",
+    "cipherconverter/manage.py",
+]
+
+[lint]
+select = [
+    "A",    # Flake8-builtins – misuse of Python built-in names
+    "ARG",  # Flake8-unused-arguments – flags unused function arguments
+    "COM",  # Flake8-commas – trailing/comma issues
+    "D",    # Pydocstyle – docstring formatting
+    "DJ",   # Flake8-django – Django-specific conventions
+    "E",    # Pycodestyle
+    "I",    # isort – import ordering checks
+    "INT",  # Flake8-gettext – checks for proper internationalization usage
+    "N",    # PEP8 Naming – naming conventions
+    "PIE",  # Flake8-pie – Python improvement suggestions
+    "PTH",  # Flake8-use-pathlib – encourages pathlib over os.path
+    "Q",    # Flake8-quotes – enforces quote style consistency
+    "RET",  # Flake8-return – return statement issues
+    "SIM",  # Flake8-simplify – code simplification hints
+    "UP",   # Pyupgrade – upgrades syntax to newer Python versions
+    "W",    # Pycodestyle warnings (style issues)
+    "YTT",  # Flake8-2020 – checks for Python 2020 best practices
+]
+ignore = [
+    "COM812", # Missing trailing comma
+    "D1",     # Pydocstyle - missing docstring in public module, class, or function
+    "D203",   # Blank line before docstring in class definition
+    "D212",   # Docstring summary starts on the first line
+]
+
+[lint.isort]
+section-order = [
+    "future",
+    "standard-library",
+    "third-party",
+    "django_related",
+    "cipherconverter",
+    "first-party",
+    "local-folder",
+]
+
+[lint.isort.sections]
+django_related = ["django", "rest_framework"]
+cipherconverter = ["ciphers", "users", "config"]
+
+[lint.flake8-unused-arguments]
+ignore-variadic-names = true
