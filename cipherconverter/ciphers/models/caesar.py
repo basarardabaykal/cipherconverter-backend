@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
-from models import CipherBase
+from models import BaseCipher
 
-class Caesar(CipherBase):
+class Caesar(BaseCipher):
     key = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(26)])

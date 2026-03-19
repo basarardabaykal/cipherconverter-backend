@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 
-class CipherBase(models.Model):
+class BaseCipher(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
