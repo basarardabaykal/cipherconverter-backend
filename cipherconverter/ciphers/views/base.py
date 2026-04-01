@@ -14,17 +14,16 @@ class BaseViewSet(GenericViewSet):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        result = self.process_cipher(serializer.validated_data)
+        output_text = self.process_cipher(serializer.validated_data)
 
         instance = serializer.save(
-            output_text=result.output_text  # placeholder
-            # other fields
+            output_text=output_text,
         )
 
         return DetailedResponse(
             status=status.HTTP_200_OK,
             status_message="Success",
             message="Successfully processed cipher.",
-            content=instance,
+            content=self.get_serializer(instance).data,
         )
 
