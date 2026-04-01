@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     "corsheaders",
     # Local apps
     "users",
+    "ciphers",
 ]
 
 MIDDLEWARE = [
