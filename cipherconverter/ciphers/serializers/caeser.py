@@ -13,4 +13,4 @@ class CaesarSerializer(BaseCipherSerializer):
             "created_at",
             "created_by",
         ]
-    read_only_fields = ["output_text, created_at, created_by"]
+        read_only_fields = ["output_text", "created_at", "created_by"]
