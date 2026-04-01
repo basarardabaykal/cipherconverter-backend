@@ -1,6 +1,6 @@
-from views import BaseViewSet
-from models import Affine
-from serializers import AffineSerializer
+from .base import BaseViewSet
+from ..models import Affine
+from ..serializers import AffineSerializer
 
 class AffineViewSet(BaseViewSet):
     queryset=Affine.objects.all()
