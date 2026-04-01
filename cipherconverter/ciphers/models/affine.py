@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
-from models import BaseCipher
+from .base import BaseCipher
 
 class Affine(BaseCipher):
     class A(models.IntegerChoices):
