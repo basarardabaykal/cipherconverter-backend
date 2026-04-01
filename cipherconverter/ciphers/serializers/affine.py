@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from serializers import BaseCipherSerializer
-from models import Affine
+from .base import BaseCipherSerializer
+from ..models import Affine
 
 class AffineSerializer(BaseCipherSerializer):
     class Meta:
