@@ -1,4 +1,3 @@
-from rest_framework import serializers
 from .base import BaseCipherSerializer
 from ..models import Caesar
 
