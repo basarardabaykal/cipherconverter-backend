@@ -9,16 +9,16 @@ RUN apt-get update && apt-get install -y \
     libsasl2-dev \
     libpq-dev \
     postgresql-client \
-    vim \
-    snmp \
-    tshark \
-    libcap2-bin \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /backend
 
-COPY requirements.txt /tmp/
-
-RUN pip install -r /tmp/requirements.txt
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY ./cipherconverter .
+
+COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
