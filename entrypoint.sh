@@ -1,5 +1,8 @@
+#!/bin/sh
+set -e
+
 echo "Waiting for postgres..."
-while ! pg_isready -h $DB_HOST -p $DB_PORT -U $DB_USER
+while ! pg_isready -h $DATABASE_HOST -p $DATABASE_PORT -U $DATABASE_USER
 do
   echo "Database is not ready yet. Retrying in 2 seconds..."
   sleep 2
