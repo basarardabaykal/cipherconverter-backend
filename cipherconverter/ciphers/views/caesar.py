@@ -13,7 +13,7 @@ class CaesarViewSet(BaseViewSet):
     serializer_class = CaesarSerializer
 
     def process_cipher(self, data):
-        address = os.getenv("CIPHER_MICROSERVICE_ADDR", "microservice:50051")
+        address = os.getenv("MICROSERVICE_URL")
         request = cipher_pb2.CaesarRequest(
             text=data["input_text"].encode("utf-8"),
             shift=data["key"],
