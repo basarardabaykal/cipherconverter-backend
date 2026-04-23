@@ -4,32 +4,32 @@ import grpc
 from rest_framework.exceptions import APIException, ValidationError
 
 from .base import BaseViewSet
-from ..models import Caesar
-from ..serializers import CaesarSerializer
+from ..models import Columnar
+from ..serializers import ColumnarSerializer
 from ..grpc import symmetric_pb2, symmetric_pb2_grpc
 
-class CaesarViewSet(BaseViewSet):
-    queryset = Caesar.objects.all()
-    serializer_class = CaesarSerializer
+
+class ColumnarViewSet(BaseViewSet):
+    queryset = Columnar.objects.all()
+    serializer_class = ColumnarSerializer
 
     def process_cipher(self, data):
         address = os.getenv("MICROSERVICE_URL")
-
         if not address:
             raise APIException(detail="MICROSERVICE_URL is not configured")
 
-        request = symmetric_pb2.CaesarRequest(
+        request = symmetric_pb2.ColumnarRequest(
             text=data["input_text"].encode("utf-8"),
-            shift=data["key"],
+            columns=data["key"],
         )
 
         try:
             with grpc.insecure_channel(address) as channel:
                 stub = symmetric_pb2_grpc.CipherServiceStub(channel)
-                if data["operation"] == Caesar.Operation.ENCRYPT:
-                    response = stub.EncryptCaesar(request, timeout=3)
-                elif data["operation"] == Caesar.Operation.DECRYPT:
-                    response = stub.DecryptCaesar(request, timeout=3)
+                if data["operation"] == Columnar.Operation.ENCRYPT:
+                    response = stub.EncryptColumnar(request, timeout=3)
+                elif data["operation"] == Columnar.Operation.DECRYPT:
+                    response = stub.DecryptColumnar(request, timeout=3)
                 else:
                     raise ValidationError({"operation": "Invalid operation."})
         except grpc.RpcError as exc:

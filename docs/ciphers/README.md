@@ -16,6 +16,8 @@ This keeps everything isolated and easy to extend.
 - Different ciphers need different fields.
   - Caesar: `key`
   - Affine: `a`, `b`
+  - Columnar: `key`
+  - OTP: `key`
 - Different ciphers need different validation and microservice calls.
 - Dedicated endpoints are safer than dynamic switching from a frontend string.
 
