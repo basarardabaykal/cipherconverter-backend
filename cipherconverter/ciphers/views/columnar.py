@@ -6,7 +6,7 @@ from rest_framework.exceptions import APIException, ValidationError
 from .base import BaseViewSet
 from ..models import Columnar
 from ..serializers import ColumnarSerializer
-from ..grpc import cipher_pb2, cipher_pb2_grpc
+from ..grpc import symmetric_pb2, symmetric_pb2_grpc
 
 
 class ColumnarViewSet(BaseViewSet):
@@ -18,14 +18,14 @@ class ColumnarViewSet(BaseViewSet):
         if not address:
             raise APIException(detail="MICROSERVICE_URL is not configured")
 
-        request = cipher_pb2.ColumnarRequest(
+        request = symmetric_pb2.ColumnarRequest(
             text=data["input_text"].encode("utf-8"),
             columns=data["key"],
         )
 
         try:
             with grpc.insecure_channel(address) as channel:
-                stub = cipher_pb2_grpc.CipherServiceStub(channel)
+                stub = symmetric_pb2_grpc.CipherServiceStub(channel)
                 if data["operation"] == Columnar.Operation.ENCRYPT:
                     response = stub.EncryptColumnar(request, timeout=3)
                 elif data["operation"] == Columnar.Operation.DECRYPT:
