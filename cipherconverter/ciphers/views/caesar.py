@@ -14,6 +14,10 @@ class CaesarViewSet(BaseViewSet):
 
     def process_cipher(self, data):
         address = os.getenv("MICROSERVICE_URL")
+
+        if not address:
+            raise APIException(detail="MICROSERVICE_URL is not configured")
+
         request = cipher_pb2.CaesarRequest(
             text=data["input_text"].encode("utf-8"),
             shift=data["key"],
