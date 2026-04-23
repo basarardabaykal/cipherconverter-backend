@@ -6,7 +6,6 @@ Use this when proto contracts change and backend gRPC Python files must be regen
 From `cipherconverter-backend` root:
 
 ```bash
-make proto-tools
 make update-proto
 make proto
 ```

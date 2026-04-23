@@ -15,7 +15,7 @@ update-proto:
 	@echo "Updating proto submodule in microservice..."
 	git -C $(MICROSERVICE_DIR) submodule update --init --remote --merge proto
 
-proto:
+proto: proto-tools
 	@echo "Generating Python gRPC files for backend..."
 	$(PYTHON) -m grpc_tools.protoc \
 		-I $(PROTO_DIR) \
