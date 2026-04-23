@@ -1,5 +1,5 @@
 import os
-
+import base64
 import grpc
 from rest_framework.exceptions import APIException, ValidationError
 
@@ -18,8 +18,13 @@ class OTPViewSet(BaseViewSet):
         if not address:
             raise APIException(detail="MICROSERVICE_URL is not configured")
 
+        if data["operation"] == OTP.Operation.DECRYPT:
+            input_bytes = base64.b64decode(data["input_text"])
+        else:
+            input_bytes = data["input_text"].encode("utf-8")
+
         request = symmetric_pb2.OTPRequest(
-            text=data["input_text"].encode("utf-8"),
+            text=input_bytes,
             key=data["key"].encode("utf-8"),
         )
 
@@ -38,5 +43,8 @@ class OTPViewSet(BaseViewSet):
             )
             exc_503.status_code = 503
             raise exc_503 from exc
+
+        if data["operation"] == OTP.Operation.ENCRYPT:
+            return base64.b64encode(response.result).decode("utf-8")
 
         return response.result.decode("utf-8")
