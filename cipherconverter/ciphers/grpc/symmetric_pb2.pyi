@@ -1,3 +1,4 @@
+import common_pb2 as _common_pb2
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from typing import ClassVar as _ClassVar, Optional as _Optional
@@ -20,8 +21,10 @@ class ColumnarRequest(_message.Message):
     columns: int
     def __init__(self, text: _Optional[bytes] = ..., columns: _Optional[int] = ...) -> None: ...
 
-class CipherResponse(_message.Message):
-    __slots__ = ("result",)
-    RESULT_FIELD_NUMBER: _ClassVar[int]
-    result: bytes
-    def __init__(self, result: _Optional[bytes] = ...) -> None: ...
+class OTPRequest(_message.Message):
+    __slots__ = ("text", "key")
+    TEXT_FIELD_NUMBER: _ClassVar[int]
+    KEY_FIELD_NUMBER: _ClassVar[int]
+    text: bytes
+    key: bytes
+    def __init__(self, text: _Optional[bytes] = ..., key: _Optional[bytes] = ...) -> None: ...
