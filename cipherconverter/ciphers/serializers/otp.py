@@ -17,6 +17,9 @@ class OTPSerializer(BaseCipherSerializer):
         read_only_fields = ["output_text", "created_at", "created_by"]
 
     def validate(self, attrs):
+        if attrs.get("operation") == "decrypt":
+            return super().validate(attrs)
+
         key = attrs.get("key")
         input_text = attrs.get("input_text")
 

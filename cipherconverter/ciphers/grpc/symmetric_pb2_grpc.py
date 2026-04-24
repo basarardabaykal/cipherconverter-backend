@@ -65,6 +65,16 @@ class CipherServiceStub(object):
                 request_serializer=symmetric__pb2.OTPRequest.SerializeToString,
                 response_deserializer=common__pb2.CipherResponse.FromString,
                 _registered_method=True)
+        self.EncryptAffine = channel.unary_unary(
+                '/symmetric.CipherService/EncryptAffine',
+                request_serializer=symmetric__pb2.AffineRequest.SerializeToString,
+                response_deserializer=common__pb2.CipherResponse.FromString,
+                _registered_method=True)
+        self.DecryptAffine = channel.unary_unary(
+                '/symmetric.CipherService/DecryptAffine',
+                request_serializer=symmetric__pb2.AffineRequest.SerializeToString,
+                response_deserializer=common__pb2.CipherResponse.FromString,
+                _registered_method=True)
 
 
 class CipherServiceServicer(object):
@@ -106,6 +116,18 @@ class CipherServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def EncryptAffine(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DecryptAffine(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_CipherServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -137,6 +159,16 @@ def add_CipherServiceServicer_to_server(servicer, server):
             'DecryptOTP': grpc.unary_unary_rpc_method_handler(
                     servicer.DecryptOTP,
                     request_deserializer=symmetric__pb2.OTPRequest.FromString,
+                    response_serializer=common__pb2.CipherResponse.SerializeToString,
+            ),
+            'EncryptAffine': grpc.unary_unary_rpc_method_handler(
+                    servicer.EncryptAffine,
+                    request_deserializer=symmetric__pb2.AffineRequest.FromString,
+                    response_serializer=common__pb2.CipherResponse.SerializeToString,
+            ),
+            'DecryptAffine': grpc.unary_unary_rpc_method_handler(
+                    servicer.DecryptAffine,
+                    request_deserializer=symmetric__pb2.AffineRequest.FromString,
                     response_serializer=common__pb2.CipherResponse.SerializeToString,
             ),
     }
@@ -301,6 +333,60 @@ class CipherService(object):
             target,
             '/symmetric.CipherService/DecryptOTP',
             symmetric__pb2.OTPRequest.SerializeToString,
+            common__pb2.CipherResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def EncryptAffine(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/symmetric.CipherService/EncryptAffine',
+            symmetric__pb2.AffineRequest.SerializeToString,
+            common__pb2.CipherResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def DecryptAffine(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/symmetric.CipherService/DecryptAffine',
+            symmetric__pb2.AffineRequest.SerializeToString,
             common__pb2.CipherResponse.FromString,
             options,
             channel_credentials,

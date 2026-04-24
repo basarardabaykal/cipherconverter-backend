@@ -25,7 +25,7 @@ _sym_db = _symbol_database.Default()
 from . import common_pb2 as common__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0fsymmetric.proto\x12\tsymmetric\x1a\x0c\x63ommon.proto\",\n\rCaesarRequest\x12\x0c\n\x04text\x18\x01 \x01(\x0c\x12\r\n\x05shift\x18\x02 \x01(\x05\"0\n\x0f\x43olumnarRequest\x12\x0c\n\x04text\x18\x01 \x01(\x0c\x12\x0f\n\x07\x63olumns\x18\x02 \x01(\x05\"\'\n\nOTPRequest\x12\x0c\n\x04text\x18\x01 \x01(\x0c\x12\x0b\n\x03key\x18\x02 \x01(\x0c\x32\x9d\x03\n\rCipherService\x12\x41\n\rEncryptCaesar\x12\x18.symmetric.CaesarRequest\x1a\x16.common.CipherResponse\x12\x41\n\rDecryptCaesar\x12\x18.symmetric.CaesarRequest\x1a\x16.common.CipherResponse\x12\x45\n\x0f\x45ncryptColumnar\x12\x1a.symmetric.ColumnarRequest\x1a\x16.common.CipherResponse\x12\x45\n\x0f\x44\x65\x63ryptColumnar\x12\x1a.symmetric.ColumnarRequest\x1a\x16.common.CipherResponse\x12;\n\nEncryptOTP\x12\x15.symmetric.OTPRequest\x1a\x16.common.CipherResponse\x12;\n\nDecryptOTP\x12\x15.symmetric.OTPRequest\x1a\x16.common.CipherResponseBOZMgithub.com/basarardabaykal/cipherconverter-microservice/internal/pb/symmetricb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0fsymmetric.proto\x12\tsymmetric\x1a\x0c\x63ommon.proto\",\n\rCaesarRequest\x12\x0c\n\x04text\x18\x01 \x01(\x0c\x12\r\n\x05shift\x18\x02 \x01(\x05\"0\n\x0f\x43olumnarRequest\x12\x0c\n\x04text\x18\x01 \x01(\x0c\x12\x0f\n\x07\x63olumns\x18\x02 \x01(\x05\"\'\n\nOTPRequest\x12\x0c\n\x04text\x18\x01 \x01(\x0c\x12\x0b\n\x03key\x18\x02 \x01(\x0c\"3\n\rAffineRequest\x12\x0c\n\x04text\x18\x01 \x01(\x0c\x12\t\n\x01\x61\x18\x02 \x01(\x05\x12\t\n\x01\x62\x18\x03 \x01(\x05\x32\xa3\x04\n\rCipherService\x12\x41\n\rEncryptCaesar\x12\x18.symmetric.CaesarRequest\x1a\x16.common.CipherResponse\x12\x41\n\rDecryptCaesar\x12\x18.symmetric.CaesarRequest\x1a\x16.common.CipherResponse\x12\x45\n\x0f\x45ncryptColumnar\x12\x1a.symmetric.ColumnarRequest\x1a\x16.common.CipherResponse\x12\x45\n\x0f\x44\x65\x63ryptColumnar\x12\x1a.symmetric.ColumnarRequest\x1a\x16.common.CipherResponse\x12;\n\nEncryptOTP\x12\x15.symmetric.OTPRequest\x1a\x16.common.CipherResponse\x12;\n\nDecryptOTP\x12\x15.symmetric.OTPRequest\x1a\x16.common.CipherResponse\x12\x41\n\rEncryptAffine\x12\x18.symmetric.AffineRequest\x1a\x16.common.CipherResponse\x12\x41\n\rDecryptAffine\x12\x18.symmetric.AffineRequest\x1a\x16.common.CipherResponseBOZMgithub.com/basarardabaykal/cipherconverter-microservice/internal/pb/symmetricb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -39,6 +39,8 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_COLUMNARREQUEST']._serialized_end=138
   _globals['_OTPREQUEST']._serialized_start=140
   _globals['_OTPREQUEST']._serialized_end=179
-  _globals['_CIPHERSERVICE']._serialized_start=182
-  _globals['_CIPHERSERVICE']._serialized_end=595
+  _globals['_AFFINEREQUEST']._serialized_start=181
+  _globals['_AFFINEREQUEST']._serialized_end=232
+  _globals['_CIPHERSERVICE']._serialized_start=235
+  _globals['_CIPHERSERVICE']._serialized_end=782
 # @@protoc_insertion_point(module_scope)

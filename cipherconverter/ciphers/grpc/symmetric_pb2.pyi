@@ -28,3 +28,13 @@ class OTPRequest(_message.Message):
     text: bytes
     key: bytes
     def __init__(self, text: _Optional[bytes] = ..., key: _Optional[bytes] = ...) -> None: ...
+
+class AffineRequest(_message.Message):
+    __slots__ = ("text", "a", "b")
+    TEXT_FIELD_NUMBER: _ClassVar[int]
+    A_FIELD_NUMBER: _ClassVar[int]
+    B_FIELD_NUMBER: _ClassVar[int]
+    text: bytes
+    a: int
+    b: int
+    def __init__(self, text: _Optional[bytes] = ..., a: _Optional[int] = ..., b: _Optional[int] = ...) -> None: ...
